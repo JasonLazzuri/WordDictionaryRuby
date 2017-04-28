@@ -1,0 +1,7 @@
+<h1>Words</h1>
+<ul>
+  <% @words.each() do |poop| %>
+    <li><a href="/word_list/<%= poop.id() %>"><%= poop.word() %></a></li>
+  <% end %>
+</ul>
+<a href="/">Return to Main Page</a>
