@@ -6,17 +6,15 @@ require('./lib/definition')
 require('pry')
 
 get('/') do
-  erb(:index)
-end
-
-get('/word_form') do
-   erb(:word_form)
-end
-
-get('/word_list') do
   @words = Word.all()
   erb(:word_list)
 end
+
+get('/word_form') do
+
+  erb(:word_form)
+end
+
 
 post('/word_list') do
   word = params.fetch('word')
