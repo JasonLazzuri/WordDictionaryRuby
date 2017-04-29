@@ -36,7 +36,7 @@ get('/word_list/:id/word_definition_form') do
     erb(:word_definition_form)
 end
 
-post('/word_definition_form') do
+post('/:id') do
   definition = params.fetch('definition')
   @definition = Definition.new(definition)
   @definition.save()
