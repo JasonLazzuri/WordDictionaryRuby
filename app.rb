@@ -25,15 +25,15 @@ post('/word_list') do
   erb(:success)
 end
 
-get('/definitions/:id') do
-  @word = Word.find(params.fetch('id').to_i())
-  erb(:definitions)
-end
 
+get('/word_list/:id') do
+    @word = Word.find(params.fetch('id').to_i())
+    erb(:definitions)
+end
 
 get('/word_list/:id/word_definition_form') do
     @word = Word.find(params.fetch('id').to_i())
-    erb(:dealership_vehicles_form)
+    erb(:word_definition_form)
 end
 
 post('/word_definition_form') do
@@ -41,7 +41,6 @@ post('/word_definition_form') do
   @definition = Definition.new(definition)
   @definition.save()
   @word = Word.find(params.fetch('word_id').to_i())
-  @word = word
-  word.add_definition(@definition)
+  @word.add_definition(@definition)
   erb(:success)
 end
