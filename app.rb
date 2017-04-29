@@ -11,7 +11,6 @@ get('/') do
 end
 
 get('/word_form') do
-
   erb(:word_form)
 end
 
