@@ -1,6 +1,6 @@
 require('rspec')
 require('word')
-require('definition')
+
 
 describe(Word) do
   before() do
@@ -14,10 +14,25 @@ describe(Word) do
     end
   end
 
-  describe('#definition') do
-    it("returns the words definition") do
-      test_definition = Definition.new("a winged flying creature")
-      expect(test_definition.definition()).to(eq("a winged flying creature"))
+  describe('.all') do
+    it("is empty at first")do
+      expect(Word.all()).to(eq([]))
+    end
+  end
+
+  describe('.clear') do
+    it('empties the array of saved words')do
+      test_word = Word.new({:word => "bat"}).save()
+      Word.clear()
+      expect(Word.all()).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it('adds a word to the array of save words')do
+      test_word = Word.new({:word => "bat"})
+      test_word.save()
+      expect(Word.all()).to(eq([test_word]))
     end
   end
 
